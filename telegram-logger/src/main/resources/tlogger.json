@@ -1,0 +1,14 @@
+{
+	"active": true,
+	"description": "app description",
+	"chats": [
+		{
+			"name": "group-x",
+			"id": -0
+		},
+		{
+			"name": "user-z",
+			"id": 0
+		}
+	]
+}
