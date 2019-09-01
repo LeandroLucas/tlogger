@@ -111,7 +111,7 @@ public class TLogger {
 			}
 			new Thread(() -> sendMsg(chatId, clazz, msg, t)).start();
 		} catch (Exception e) {
-			logger.error("", e);
+			logger.error("Error on async tlogger execution ", e);
 		}
 	}
 

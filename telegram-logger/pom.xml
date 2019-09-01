@@ -5,12 +5,38 @@
 	<groupId>com.lebittec</groupId>
 	<artifactId>telegram-logger</artifactId>
 	<version>1.0.0</version>
+
 	<name>${project.artifactId}</name>
+	<description>A logger to send log to telegram groups and users.</description>
+	<url>https://github.com/LeandroLucas/telegram-logger</url>
 
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
+
+	<developers>
+		<developer>
+			<name>Leandro Santos</name>
+			<email>leandro.lucas_@hotmail.com</email>
+			<organization>Lebit</organization>
+			<organizationUrl>https://github.com/LeandroLucas</organizationUrl>
+		</developer>
+	</developers>
+
+	<licenses>
+		<license>
+			<name>The Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+	<scm>
+		<connection>scm:git:git://github.com/LeandroLucas/telegram-logger.git</connection>
+		<developerConnection>scm:git:ssh://github.com:LeandroLucas/telegram-logger.git</developerConnection>
+		<url>http://github.com/LeandroLucas/telegram-logger/tree/master</url>
+	</scm>
+
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
