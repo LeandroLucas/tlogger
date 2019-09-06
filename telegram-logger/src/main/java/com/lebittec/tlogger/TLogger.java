@@ -47,7 +47,7 @@ public class TLogger {
 	}
 	
 	/**
-	 * Setup a telegram bot token a default chat id and a config fir
+	 * Setup a telegram bot token a default chat id and a config file dir
 	 * @param token telegram bot token
 	 * @param defaultChatId telegram group or user id
 	 * @param configDir directory of tlogger config file
