@@ -20,10 +20,17 @@ import com.google.gson.JsonParser;
 
 /**
  * @author <a href="mailto:leandro.lucas_@hotmail.com">Leandro Lucas Santos</a>
- *
+ * 
+ * A final class with utilities methods
  */
 public final class Utils {
 
+	/**
+	 * Divide a message in parts of maxPerMessage size
+	 * @param content The message
+	 * @param maxPerMessage the parts size
+	 * @return A list of messages with maxPerMessage size
+	 */
 	public static List<String> divideMessageContent(String content, final int maxPerMessage) {
 		List<String> msgs = null;
 		if (content != null) {
@@ -41,6 +48,12 @@ public final class Utils {
 		return msgs;
 	}
 
+	/**
+	 * Parse Throwable stacktrace to string
+	 * @param t throwable with stacktrace
+	 * @return Stacktrace of t
+	 * @throws IOException
+	 */
 	public static String getStacktrace(Throwable t) throws IOException {
 		if (t == null)
 			return "";
@@ -52,6 +65,12 @@ public final class Utils {
 		return stacktrace.toString();
 	}
 
+	/**
+	 * Find a file in dir, if do not exists, search in resources folder
+	 * @param dir To search first
+	 * @param fileName The file name
+	 * @return File from indicated dir or resources dir
+	 */
 	private static File findFile(final String dir, String fileName) {
 		File file = new File(dir + fileName);
 		if (!file.exists()) {
@@ -61,6 +80,13 @@ public final class Utils {
 		return file;
 	}
 
+	/**
+	 * Load a jsonObject from file
+	 * @param dir where the file is
+	 * @param fileName The name of json's file
+	 * @return A JsonObject from the loaded file
+	 * @throws IOException if the file do not exists
+	 */
 	public static JsonObject loadFileToJsonObject(final String dir, final String fileName) throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(findFile(dir, fileName)));
 		JsonObject jsonObject = new JsonParser().parse(br).getAsJsonObject();
@@ -68,6 +94,10 @@ public final class Utils {
 		return jsonObject;
 	}
 
+	/**
+	 * Find the hosts name
+	 * @return the hostname
+	 */
 	public static String getHostName() {
 		String hostName = null;
 		try {
