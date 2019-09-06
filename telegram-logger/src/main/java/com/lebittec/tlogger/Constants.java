@@ -1,13 +1,13 @@
 /**
  * 
  */
-package com.lebittec.tlogger.utils;
+package com.lebittec.tlogger;
 
 /**
  * @author <a href="mailto:leandro.lucas_@hotmail.com">Leandro Lucas Santos</a>
  *
  */
-public interface Constants {
+interface Constants {
 
 	static final String DEFAULT_CHAT_NAME = "default";
 	static final String DEFAULT_SCRIPTS_FOLDER = "./config/";

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.lebittec.tlogger.utils;
+package com.lebittec.tlogger;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -23,7 +23,7 @@ import com.google.gson.JsonParser;
  * 
  * A final class with utilities methods
  */
-public final class Utils {
+final class Utils {
 
 	/**
 	 * Divide a message in parts of maxPerMessage size
@@ -31,7 +31,7 @@ public final class Utils {
 	 * @param maxPerMessage the parts size
 	 * @return A list of messages with maxPerMessage size
 	 */
-	public static List<String> divideMessageContent(String content, final int maxPerMessage) {
+	protected static List<String> divideMessageContent(String content, final int maxPerMessage) {
 		List<String> msgs = null;
 		if (content != null) {
 			int start = 0;
@@ -54,7 +54,7 @@ public final class Utils {
 	 * @return Stacktrace of t
 	 * @throws IOException
 	 */
-	public static String getStacktrace(Throwable t) throws IOException {
+	protected static String getStacktrace(Throwable t) throws IOException {
 		if (t == null)
 			return "";
 		StringWriter stacktrace = new StringWriter();
@@ -71,7 +71,7 @@ public final class Utils {
 	 * @param fileName The file name
 	 * @return File from indicated dir or resources dir
 	 */
-	private static File findFile(final String dir, String fileName) {
+	protected static File findFile(final String dir, String fileName) {
 		File file = new File(dir + fileName);
 		if (!file.exists()) {
 			ClassLoader classLoader = ClassLoader.getSystemClassLoader();
@@ -87,7 +87,7 @@ public final class Utils {
 	 * @return A JsonObject from the loaded file
 	 * @throws IOException if the file do not exists
 	 */
-	public static JsonObject loadFileToJsonObject(final String dir, final String fileName) throws IOException {
+	protected static JsonObject loadFileToJsonObject(final String dir, final String fileName) throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(findFile(dir, fileName)));
 		JsonObject jsonObject = new JsonParser().parse(br).getAsJsonObject();
 		br.close();
@@ -98,7 +98,7 @@ public final class Utils {
 	 * Find the hosts name
 	 * @return the hostname
 	 */
-	public static String getHostName() {
+	protected static String getHostName() {
 		String hostName = null;
 		try {
 			hostName = InetAddress.getLocalHost().getHostName();

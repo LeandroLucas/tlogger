@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.lebittec.tlogger.models;
+package com.lebittec.tlogger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,14 +9,12 @@ import java.util.Objects;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.lebittec.tlogger.utils.Constants;
-import com.lebittec.tlogger.utils.Utils;
 
 /**
  * @author <a href="mailto:leandro.lucas_@hotmail.com">Leandro Lucas Santos</a>
  *
  */
-public class LoggerConfig {
+class LoggerConfig {
 
 	private String botToken;
 
@@ -30,7 +28,7 @@ public class LoggerConfig {
 
 	private String configFileDir;
 
-	public LoggerConfig(String botToken, Long defaultChatId, String configFileDir) {
+	protected LoggerConfig(String botToken, Long defaultChatId, String configFileDir) {
 		Objects.requireNonNull(botToken, "Use TLogger.setup for setup botToken");
 		Objects.requireNonNull(defaultChatId, "Use TLogger.setup for setup defaultChatId");
 		this.botToken = botToken;
@@ -39,7 +37,7 @@ public class LoggerConfig {
 		this.loadConfig();
 	}
 
-	public Long getChatId(String chatName) {
+	protected Long getChatId(String chatName) {
 		Long chatId = this.chatMap.get(chatName);
 		if (chatId == null) {
 			chatId = this.chatMap.get(Constants.DEFAULT_CHAT_NAME);
@@ -47,7 +45,7 @@ public class LoggerConfig {
 		return chatId;
 	}
 
-	private void loadChats(JsonObject configObject) {
+	protected void loadChats(JsonObject configObject) {
 		this.chatMap.clear();
 		JsonArray chats = configObject.get("chats").getAsJsonArray();
 		for (int i = 0; i < chats.size(); i++) {
@@ -56,7 +54,7 @@ public class LoggerConfig {
 		}
 	}
 
-	public void loadConfig() {
+	protected void loadConfig() {
 		try {
 			JsonObject configObject = Utils.loadFileToJsonObject(this.configFileDir == null ? Constants.DEFAULT_SCRIPTS_FOLDER : this.configFileDir,
 					Constants.CONFIG_OBJECT_NAME);

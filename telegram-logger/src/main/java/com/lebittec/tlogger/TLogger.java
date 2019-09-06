@@ -1,7 +1,7 @@
 /**
  * Feb 18, 2019
  */
-package com.lebittec.tlogger.core;
+package com.lebittec.tlogger;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -11,11 +11,6 @@ import java.util.Objects;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.lebittec.tlogger.models.HttpConnection;
-import com.lebittec.tlogger.models.LoggerConfig;
-import com.lebittec.tlogger.utils.Constants;
-import com.lebittec.tlogger.utils.Utils;
 
 /**
  * @author <a href="mailto:leandro.lucas_@hotmail.com">Leandro Lucas Santos</a>
