@@ -14,6 +14,8 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author <a href="mailto:leandro.lucas_@hotmail.com">Leandro Lucas Santos</a>
+ * 
+ * telegram logger api
  */
 public class TLogger {
 
@@ -28,17 +30,37 @@ public class TLogger {
 	private LoggerConfig config;
 
 	/**
-	 * Logger instance
+	 * Logger singleton instance
 	 */
 	private static TLogger tlogger;
 
 	SimpleDateFormat sdf;
 
+	/**
+	 * Setup a telegram bot token and a default chat id
+	 * @param token telegram bot token
+	 * @param defaultChatId telegram group or user id
+	 */
 	public static void setup(String token, Long defaultChatId) {
 		TLogger.token = token;
 		TLogger.defaultChatId = defaultChatId;
 	}
+	
+	/**
+	 * Setup a telegram bot token a default chat id and a config fir
+	 * @param token telegram bot token
+	 * @param defaultChatId telegram group or user id
+	 * @param configDir directory of tlogger config file
+	 */
+	public static void setup(String token, Long defaultChatId, String configDir) {
+		TLogger.token = token;
+		TLogger.defaultChatId = defaultChatId;
+		TLogger.configFileDir = configDir;
+	}
 
+	/**
+	 * @return TLogger instance
+	 */
 	public static TLogger getLogger() {
 		if (tlogger == null) {
 			tlogger = new TLogger();
@@ -51,50 +73,109 @@ public class TLogger {
 		this.config = new LoggerConfig(TLogger.token, TLogger.defaultChatId, TLogger.configFileDir);
 	}
 
+	/*
+	 * Disable all tlogger messages
+	 */
 	public void disable() {
 		this.config.setActive(false);
 	}
 
+	/*
+	 * Enable all tlogger messages
+	 */
 	public void enable() {
 		this.config.setActive(true);
 	}
 
+	/**
+	 * Reload tlogger configs from file
+	 */
 	public void reload() {
 		this.config.loadConfig();
 	}
 
+	/**
+	 * Send log to telegram through this params
+	 * @param clazz any class
+	 * @param msg A message to send
+	 */
 	public void send(Class<?> clazz, String msg) {
 		this.send(Constants.DEFAULT_CHAT_NAME, clazz, msg, null);
 	}
 
+	/**
+	 * Send log to telegram through this params
+	 * @param chatName The name of config file's chat
+	 * @param clazz any class
+	 * @param msg A message to send
+	 */
 	public void send(String chatName, Class<?> clazz, String msg) {
 		this.send(chatName, clazz, msg, null);
 	}
 
+	/**
+	 * Send log to telegram through this params
+	 * @param clazz any class
+	 * @param msg A message to send
+	 * @param t A Throwable to extract stacktrace
+	 */
 	public void send(Class<?> clazz, String msg, Throwable t) {
 		this.send(Constants.DEFAULT_CHAT_NAME, clazz, msg, t);
 	}
 
+	/**
+	 * Send log to telegram through this params
+	 * @param clazz any class
+	 * @param t A Throwable to extract stacktrace
+	 */
 	public void send(Class<?> clazz, Throwable t) {
 		this.send(Constants.DEFAULT_CHAT_NAME, clazz, null, t);
 	}
 
+	/**
+	 * Send log to telegram through this params
+	 * @param chatName The name of config file's chat
+	 * @param clazz any class
+	 * @param t A Throwable to extract stacktrace
+	 */
 	public void send(String chatName, Class<?> clazz, Throwable t) {
 		this.send(chatName, clazz, null, t);
 	}
 
+	/**
+	 * Send log to telegram through this params
+	 * @param chatName The name of config file's chat
+	 * @param msg A message to send
+	 * @param t A Throwable to extract stacktrace
+	 */
 	public void send(String chatName, String msg, Throwable t) {
 		this.send(chatName, null, msg, t);
 	}
 
+	/**
+	 * Send log to telegram through this params
+	 * @param chatName The name of config file's chat
+	 * @param msg A message to send
+	 */
 	public void send(String chatName, String msg) {
 		this.send(chatName, null, msg, null);
 	}
 
+	/**
+	 * Send log to telegram through this params
+	 * @param msg A message to send
+	 */
 	public void send(String msg) {
 		this.send(Constants.DEFAULT_CHAT_NAME, null, msg, null);
 	}
 
+	/**
+	 * Send log to telegram through this params
+	 * @param chatName The name of config file's chat
+	 * @param clazz any class
+	 * @param msg A message to send
+	 * @param t A Throwable to extract stacktrace
+	 */
 	public void send(String chatName, Class<?> clazz, String msg, Throwable t) {
 		this.sendAsync(this.config.getChatId(chatName), clazz, msg, t);
 	}
