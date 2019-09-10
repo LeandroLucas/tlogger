@@ -18,11 +18,11 @@ Java library to send log to telegram groups and users through bots using telegra
 
 ### Coding:
 
-***Setup TLogger with a telegram bot token and a default chat id***
+Setup TLogger with a telegram bot token and a default chat id
 ```
 TLogger.setup("BOT_TOKEN", -12314124);
 ```
-***Send logs to telegram***
+Send logs to telegram
 ```
 TLogger.getLogger().send(ExampleClass.class, "Message to send", new RuntimeException("Throwable example"));
 ```
