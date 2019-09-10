@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.lebittec.tlogger.models;
+package com.lebittec.tlogger;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -12,15 +12,15 @@ import java.net.URL;
  * @author <a href="mailto:leandro.lucas_@hotmail.com">Leandro Lucas Santos</a>
  *
  */
-public class HttpConnection {
+class HttpConnection {
 
 	private HttpURLConnection connection;
 
-	public HttpConnection(String url) throws IOException {
+	protected HttpConnection(String url) throws IOException {
 		connection = this.openConnection(url);
 	}
 
-	private HttpURLConnection openConnection(String url) throws IOException {
+	protected HttpURLConnection openConnection(String url) throws IOException {
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		con.setRequestMethod("POST");
@@ -29,7 +29,7 @@ public class HttpConnection {
 		return con;
 	}
 
-	public void addParameters(String urlParameters) throws IOException {
+	protected void addParameters(String urlParameters) throws IOException {
 		connection.setDoOutput(true);
 		DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
 		wr.write(urlParameters.getBytes("UTF-8"));
@@ -37,7 +37,7 @@ public class HttpConnection {
 		wr.close();
 	}
 
-	public Object execute() throws IOException {
+	protected Object execute() throws IOException {
 		return connection.getContent();
 	}
 }

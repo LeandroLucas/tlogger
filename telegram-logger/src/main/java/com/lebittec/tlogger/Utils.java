@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.lebittec.tlogger.utils;
+package com.lebittec.tlogger;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,11 +20,18 @@ import com.google.gson.JsonParser;
 
 /**
  * @author <a href="mailto:leandro.lucas_@hotmail.com">Leandro Lucas Santos</a>
- *
+ * 
+ * A final class with utilities methods
  */
-public final class Utils {
+final class Utils {
 
-	public static List<String> divideMessageContent(String content, final int maxPerMessage) {
+	/**
+	 * Divide a message in parts of maxPerMessage size
+	 * @param content The message
+	 * @param maxPerMessage the parts size
+	 * @return A list of messages with maxPerMessage size
+	 */
+	protected static List<String> divideMessageContent(String content, final int maxPerMessage) {
 		List<String> msgs = null;
 		if (content != null) {
 			int start = 0;
@@ -41,7 +48,13 @@ public final class Utils {
 		return msgs;
 	}
 
-	public static String getStacktrace(Throwable t) throws IOException {
+	/**
+	 * Parse Throwable stacktrace to string
+	 * @param t throwable with stacktrace
+	 * @return Stacktrace of t
+	 * @throws IOException
+	 */
+	protected static String getStacktrace(Throwable t) throws IOException {
 		if (t == null)
 			return "";
 		StringWriter stacktrace = new StringWriter();
@@ -52,7 +65,13 @@ public final class Utils {
 		return stacktrace.toString();
 	}
 
-	private static File findFile(final String dir, String fileName) {
+	/**
+	 * Find a file in dir, if do not exists, search in resources folder
+	 * @param dir To search first
+	 * @param fileName The file name
+	 * @return File from indicated dir or resources dir
+	 */
+	protected static File findFile(final String dir, String fileName) {
 		File file = new File(dir + fileName);
 		if (!file.exists()) {
 			ClassLoader classLoader = ClassLoader.getSystemClassLoader();
@@ -61,14 +80,25 @@ public final class Utils {
 		return file;
 	}
 
-	public static JsonObject loadFileToJsonObject(final String dir, final String fileName) throws IOException {
+	/**
+	 * Load a jsonObject from file
+	 * @param dir where the file is
+	 * @param fileName The name of json's file
+	 * @return A JsonObject from the loaded file
+	 * @throws IOException if the file do not exists
+	 */
+	protected static JsonObject loadFileToJsonObject(final String dir, final String fileName) throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(findFile(dir, fileName)));
 		JsonObject jsonObject = new JsonParser().parse(br).getAsJsonObject();
 		br.close();
 		return jsonObject;
 	}
 
-	public static String getHostName() {
+	/**
+	 * Find the hosts name
+	 * @return the hostname
+	 */
+	protected static String getHostName() {
 		String hostName = null;
 		try {
 			hostName = InetAddress.getLocalHost().getHostName();
