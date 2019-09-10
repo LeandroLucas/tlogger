@@ -32,6 +32,7 @@ TLogger.getLogger().send(ExampleClass.class, "Message to send", new RuntimeExcep
 <p>
  tlogger.json is a file to setup chats and application description:
 </p>
+
 ```
 {
 	"active": true,
@@ -50,5 +51,7 @@ TLogger.getLogger().send(ExampleClass.class, "Message to send", new RuntimeExcep
 ```
 
 ***active***: Disable the logger. if you need the logger to start off
+
 ***description***: A description of the application that will send logs
+
 ***chats***: Chat's to send logs. Chat's in tlogger.json are used by their names in the send method.
