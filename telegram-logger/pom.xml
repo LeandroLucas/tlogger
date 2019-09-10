@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.lebittec</groupId>
-	<artifactId>telegram-logger</artifactId>
+	<artifactId>tlogger</artifactId>
 	<version>1.0.0</version>
 
 	<name>${project.artifactId}</name>
 	<description>A logger to send log to telegram groups and users.</description>
-	<url>https://github.com/LeandroLucas/telegram-logger</url>
+	<url>https://github.com/LeandroLucas/tlogger</url>
 
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -32,9 +32,9 @@
 	</licenses>
 
 	<scm>
-		<connection>scm:git:git://github.com/LeandroLucas/telegram-logger.git</connection>
-		<developerConnection>scm:git:ssh://github.com:LeandroLucas/telegram-logger.git</developerConnection>
-		<url>http://github.com/LeandroLucas/telegram-logger/tree/master</url>
+		<connection>scm:git:git://github.com/LeandroLucas/tlogger.git</connection>
+		<developerConnection>scm:git:ssh://github.com:LeandroLucas/tlogger.git</developerConnection>
+		<url>http://github.com/LeandroLucas/tlogger/tree/master</url>
 	</scm>
 
 	<dependencies>
