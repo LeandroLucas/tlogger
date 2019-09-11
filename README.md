@@ -50,7 +50,7 @@ TLogger.getLogger().send(ExampleClass.class, "Message to send", new RuntimeExcep
 }
 ```
 
-***active***: Disable the logger. if you need the logger to start off
+***active***: Disable/Enable the logger. if you need the logger to start on or off
 
 ***description***: A description of the application that will send logs
 
