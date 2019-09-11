@@ -18,10 +18,8 @@ Java library to send log to telegram users and groups through bots.
 
 ### Prerequisites
 
-<p>
 You need a bot to send logs for you. Just talk to [BotFather](https://telegram.me/botfather) and follow a few simple steps.
 You also need a chat id from a user or a group. Use [IDBot](https://telegram.me/myidbot) for that.
-</p>
 
 ### Using
 
