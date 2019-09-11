@@ -6,7 +6,7 @@
 </a>
 </p>
 <p align="center">
-Java library to send log to telegram groups and users through bots using telegram http api
+Java library to send log to telegram users and groups through bots.
 </p>
 
 ## How it works
@@ -15,6 +15,15 @@ Java library to send log to telegram groups and users through bots using telegra
 </p>
 
 ## How to use
+
+### Prerequisites
+
+<p>
+You need a bot to send logs for you. Just talk to [BotFather](https://telegram.me/botfather) and follow a few simple steps.
+You also need a chat id from a user or a group. Use [IDBot](https://telegram.me/myidbot) for that.
+</p>
+
+### Using
 
 Setup TLogger with a telegram bot token and a default chat id
 ```
@@ -28,7 +37,7 @@ TLogger.getLogger().send(ExampleClass.class, "Message to send", new RuntimeExcep
 ### Setup tlogger.json
 
 <p>
- tlogger.json is a file to setup chats and application description:
+ tlogger.json is a file to setup chat's and application description:
 </p>
 
 ```
@@ -48,7 +57,7 @@ TLogger.getLogger().send(ExampleClass.class, "Message to send", new RuntimeExcep
 }
 ```
 
-***active***: Disable/Enable the logger. if you need the logger to start on or off
+***active***: Disable/Enable the logger. if you need the logger to start on or off, this can be changed with `TLogger.disable()` and `TLogger.enable()`
 
 ***description***: A description of the application that will send logs
 
