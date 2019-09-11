@@ -212,6 +212,7 @@ public class TLogger {
 		content.append('[');
 		content.append(this.config.getDescription());
 		content.append(']');
+		content.append(' ');
 		if (Objects.nonNull(clazz)) {
 			content.append(clazz.getName());
 		}
