@@ -25,7 +25,7 @@ You also need a chat id from a user or a group. Use [IDBot](https://telegram.me/
 
 Setup TLogger with a telegram bot token and a default chat id
 ```
-TLogger.setup("BOT_TOKEN", -12314124);
+TLogger.setup("BOT_TOKEN", -12314124l);
 ```
 Send logs to telegram
 ```
