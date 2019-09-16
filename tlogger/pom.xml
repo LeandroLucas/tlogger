@@ -38,14 +38,12 @@
 		<url>http://github.com/LeandroLucas/tlogger/tree/master</url>
 	</scm>
 
-	<distributionManagement> <!--  to configure Maven to deploy to the OSSRH Nexus Repository Manager with the Nexus Staging Maven plugin -->
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
+	<!-- to configure Maven to deploy to the github packages -->
+	<distributionManagement>
 		<repository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+			<id>github</id>
+			<name>GitHub LeandroLucas Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/LeandroLucas/tlogger</url>
 		</repository>
 	</distributionManagement>
 
@@ -111,7 +109,8 @@
 				</executions>
 			</plugin>
 			<!-- gpg -->
-			<plugin> <!-- The Maven GPG plugin is used to sign the components with the following configuration. -->
+			<plugin> <!-- The Maven GPG plugin is used to sign the components with the following 
+					configuration. -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-gpg-plugin</artifactId>
 				<version>1.5</version>
@@ -124,17 +123,6 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin> <!--  to configure Maven to deploy to the OSSRH Nexus Repository Manager with the Nexus Staging Maven plugin -->
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>1.6.7</version>
-				<extensions>true</extensions>
-				<configuration>
-					<serverId>ossrh</serverId>
-					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>true</autoReleaseAfterClose>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
